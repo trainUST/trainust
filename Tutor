@@ -1,0 +1,36 @@
+public class Tutor extends Defender {
+  private Image tutorImage = new Image(tutor.png);
+  
+  public Tutor() {
+    setImage(tutorImage);
+    setCost(200);
+  }
+  
+  public void act() {
+    setImage(tutorImage);
+    shootPencil(1000);
+  }
+  
+  private long lastAdded = System.currentTimeMillis();
+  
+  private void shootPencil(int interval) {
+    if (!Grid.getObjects(Zombie).isEmpty())
+        {
+            long curTime  = System.currentTimeMillis();
+            if (curTime >= lastAdded + interval)
+            { 
+                lastAdded  = curTime;
+                Bullet pencil1 = new Pencil();
+                Bullet pencil2 = new Pencil();
+                int positionX = super.getX();
+                int positionY = super.getY();
+                Grid.addObject(pencil1, positionX + 28, positionY -11);
+                Grid.addObject(pencil2, positionX + 28, positionY -9);
+            }
+    }
+  } 
+  
+  public int setCost(int cost) {
+    currentFirstAid -= cost;
+  }
+}
