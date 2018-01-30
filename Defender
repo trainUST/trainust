@@ -1,0 +1,39 @@
+public abstract Defender extends Character {
+  private int cost;
+  private boolean alive;
+  private int locationX;
+  private int locationY;
+ 
+  
+  public Defender () {
+   alive = true;
+   locationX = Grid.getX();
+   locationY = Grid.getY();
+  }
+  
+  public boolean getStatus() {
+    if(!isTouching(zombie)){
+      this = null; //remove object
+    }
+    return alive; 
+  }
+  
+  public int getX() {
+    return locationX;
+  }
+  
+  public int getY() {
+    return locationY;
+  }
+  
+  public boolean isTouching(Zombie zombie) {
+    if(locationX=Zombie.locationX && locationY=Zombie.locationY) {
+      alive = false;
+      return alive;
+    }
+  }
+  
+  public abstract int setCost() {
+  }
+  
+}
